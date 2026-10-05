@@ -24,16 +24,37 @@ Modern network traffic analysis and deep packet inspection (DPI) technologies ca
 
 ## ✨ Key Features
 
-1. **Traffic Morphing Engine**: Real-time transformation of raw payload metadata into HTTPS-like, DNS-like, Video-stream-like, and Gaming-like signatures.
-2. **End-to-End Encryption Envelope**: AES-256-GCM context initialization with dynamic ephemeral key rotation.
-3. **5G Performance & QoS Simulator**: Interactive sliders for bandwidth (10 Mbps to 1 Gbps), latency (5 ms to 200 ms), jitter, and packet loss with real-time score recalculation.
-4. **Live Traffic Telemetry Monitor**: Sub-second Socket.IO packet stream visualization and trajectory flow pipeline.
-5. **Security Center & Threat Timeline**: Encryption state tracking, JWT authentication verification, entropy auditing (>7.8), and key rotation event logging.
-6. **Performance & Security Analytics**: Recharts visualizations for latency, throughput, packet processing rate, overhead, before vs after comparative stats, and dynamic NetMorph Performance Score calculation.
-7. **Telecom Provider Monetization Dashboard**: Interactive subscriber revenue simulator and 5G service tier breakdown (FREE, PRO, ENTERPRISE).
-8. **Enterprise Organization Governance**: User access roles, active SLA tracking, and policy enforcement toggles (Strict TLS, MTU Padding, Entropy Thresholds).
-9. **Interactive Presentation Demo Mode**: One-click guided 6-step automated demo sequence with progress indicator bar and final audit report modal.
-10. **Interactive Architecture Topology & API Docs**: Clickable component data flow model and live REST endpoint runner console.
+1. **AI Network Security & Traffic Optimization Assistant**: Analyzes real-time metrics, QoS, security posture, and provides intelligent, actionable recommendations to improve performance and harden security using LLMs.
+2. **Traffic Morphing Engine**: Real-time transformation of raw payload metadata into HTTPS-like, DNS-like, Video-stream-like, and Gaming-like signatures.
+3. **End-to-End Encryption Envelope**: AES-256-GCM context initialization with dynamic ephemeral key rotation.
+4. **5G Performance & QoS Simulator**: Interactive sliders for bandwidth (10 Mbps to 1 Gbps), latency (5 ms to 200 ms), jitter, and packet loss with real-time score recalculation.
+5. **Live Traffic Telemetry Monitor**: Sub-second Socket.IO packet stream visualization and trajectory flow pipeline.
+6. **Security Center & Threat Timeline**: Encryption state tracking, JWT authentication verification, entropy auditing (>7.8), and key rotation event logging.
+7. **Performance & Security Analytics**: Recharts visualizations for latency, throughput, packet processing rate, overhead, before vs after comparative stats, and dynamic NetMorph Performance Score calculation.
+8. **Telecom Provider Monetization Dashboard**: Interactive subscriber revenue simulator and 5G service tier breakdown (FREE, PRO, ENTERPRISE).
+9. **Enterprise Organization Governance**: User access roles, active SLA tracking, and policy enforcement toggles (Strict TLS, MTU Padding, Entropy Thresholds).
+10. **Interactive Presentation Demo Mode**: One-click guided 6-step automated demo sequence with progress indicator bar and final audit report modal.
+11. **Interactive Architecture Topology & API Docs**: Clickable component data flow model and live REST endpoint runner console.
+
+---
+
+## 🤖 AI Assistant Architecture
+
+The AI module integrates real-time network metrics and security conditions, querying an external LLM (e.g., Google Gemini 1.5 Flash) for instant recommendations. The architecture is as follows:
+
+```text
+Frontend
+↓ (REST API via /api/ai/analyze-network)
+Express API
+↓
+AI Service (aiService.js)
+↓ (Prompt with metrics)
+LLM API (e.g. Gemini, OpenAI)
+↓ (Structured JSON)
+Structured AI Response
+↓
+Frontend Dashboard (AINetworkAnalysisPanel)
+```
 
 ---
 
@@ -60,7 +81,19 @@ npm run setup
 
 *(This will install dependencies for root, server, and client directories automatically).*
 
-### 3. Run Development Environment
+### 3. AI Configuration (Optional but required for AI features)
+Copy `.env.example` to `.env` in the root directory:
+```bash
+cp .env.example .env
+```
+Update the `.env` file with your Gemini API key:
+```env
+AI_API_KEY=your_gemini_api_key_here
+AI_MODEL=gemini-1.5-flash
+AI_PROVIDER=gemini
+```
+
+### 4. Run Development Environment
 To start both backend server (Port 5000) and frontend client (Port 5173) concurrently:
 
 ```bash

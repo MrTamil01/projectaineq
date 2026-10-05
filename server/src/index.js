@@ -5,6 +5,8 @@ import helmet from "helmet";
 import rateLimit from "express-rate-limit";
 import dotenv from "dotenv";
 
+dotenv.config();
+
 import { connectDB } from "./config/db.js";
 import { initSocket } from "./services/socketService.js";
 import { errorHandler } from "./middleware/errorHandler.js";
@@ -16,10 +18,8 @@ import analyticsRoutes from "./routes/analyticsRoutes.js";
 import securityRoutes from "./routes/securityRoutes.js";
 import providerRoutes from "./routes/providerRoutes.js";
 import enterpriseRoutes from "./routes/enterpriseRoutes.js";
+import aiRoutes from "./routes/aiRoutes.js";
 import apiDocsRoutes from "./routes/apiDocsRoutes.js";
-
-dotenv.config();
-
 const app = express();
 const server = http.createServer(app);
 
@@ -46,6 +46,7 @@ app.use("/api/analytics", analyticsRoutes);
 app.use("/api/security", securityRoutes);
 app.use("/api/provider", providerRoutes);
 app.use("/api/enterprise", enterpriseRoutes);
+app.use("/api/ai", aiRoutes);
 app.use("/api/docs", apiDocsRoutes);
 
 // Health Check Endpoint

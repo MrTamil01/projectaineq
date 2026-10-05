@@ -15,6 +15,7 @@ import {
 import { useSimulation } from "../context/SimulationContext";
 import PacketFlowVisualizer from "../components/PacketFlowVisualizer";
 import PacketTable from "../components/PacketTable";
+import AINetworkAnalysisPanel from "../components/AINetworkAnalysisPanel";
 
 export default function DashboardPage({ setActivePage }) {
   const { activeSession, currentMetrics, livePackets, runPresentationDemo } = useSimulation();
@@ -147,6 +148,9 @@ export default function DashboardPage({ setActivePage }) {
 
       {/* LIVE PACKET TABLE STREAM */}
       <PacketTable packets={livePackets} />
+
+      {/* AI NETWORK ANALYSIS PANEL */}
+      <AINetworkAnalysisPanel currentMetrics={currentMetrics} activeSession={activeSession} />
     </div>
   );
 }
