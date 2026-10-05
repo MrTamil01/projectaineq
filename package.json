@@ -1,0 +1,24 @@
+{
+  "name": "netmorph-5g-platform",
+  "version": "1.0.0",
+  "description": "NetMorph - 5G-Native Secure Traffic Morphing Platform",
+  "main": "server/src/index.js",
+  "scripts": {
+    "setup": "npm install && cd server && npm install && cd ../client && npm install",
+    "dev": "concurrently \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "start": "node server/src/index.js",
+    "build": "cd client && npm run build"
+  },
+  "keywords": [
+    "5g",
+    "security",
+    "traffic-morphing",
+    "cybersecurity",
+    "encryption"
+  ],
+  "author": "NetMorph Team",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
